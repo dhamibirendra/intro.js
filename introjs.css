@@ -4,30 +4,31 @@
   z-index: 999999;
   background-color: #000;
   opacity: 0;
-  background: -moz-radial-gradient(center,ellipse cover,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);
-  background: -webkit-gradient(radial,center center,0px,center center,100%,color-stop(0%,rgba(0,0,0,0.4)),color-stop(100%,rgba(0,0,0,0.9)));
-  background: -webkit-radial-gradient(center,ellipse cover,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);
-  background: -o-radial-gradient(center,ellipse cover,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);
-  background: -ms-radial-gradient(center,ellipse cover,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);
-  background: radial-gradient(center,ellipse cover,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);
-  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#66000000',endColorstr='#e6000000',GradientType=1)";
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-  filter: alpha(opacity=50);
+  background-color: rgba(20,29,42,0.85);
+  /*background: -moz-radial-gradient(center,ellipse cover,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);*/
+  /*background: -webkit-gradient(radial,center center,0px,center center,100%,color-stop(0%,rgba(0,0,0,0.4)),color-stop(100%,rgba(0,0,0,0.9)));*/
+  /*background: -webkit-radial-gradient(center,ellipse cover,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);*/
+  /*background: -o-radial-gradient(center,ellipse cover,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);*/
+  /*background: -ms-radial-gradient(center,ellipse cover,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);*/
+  /*background: radial-gradient(center,ellipse cover,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);*/
+  /*filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#66000000',endColorstr='#e6000000',GradientType=1)";*/
+  /*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";*/
+  /*filter: alpha(opacity=50);*/
   -webkit-transition: all 0.3s ease-out;
-     -moz-transition: all 0.3s ease-out;
-      -ms-transition: all 0.3s ease-out;
-       -o-transition: all 0.3s ease-out;
-          transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .introjs-fixParent {
   z-index: auto !important;
   opacity: 1.0 !important;
   -webkit-transform: none !important;
-     -moz-transform: none !important;
-      -ms-transform: none !important;
-       -o-transform: none !important;
-          transform: none !important;
+  -moz-transform: none !important;
+  -ms-transform: none !important;
+  -o-transform: none !important;
+  transform: none !important;
 }
 
 .introjs-showElement,
@@ -61,10 +62,10 @@ tr.introjs-showElement > th {
   border-radius: 4px;
   box-shadow: 0 2px 15px rgba(0,0,0,.4);
   -webkit-transition: all 0.3s ease-out;
-     -moz-transition: all 0.3s ease-out;
-      -ms-transition: all 0.3s ease-out;
-       -o-transition: all 0.3s ease-out;
-          transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .introjs-tooltipReferenceLayer {
@@ -74,20 +75,20 @@ tr.introjs-showElement > th {
   z-index: 10000000;
   background-color: transparent;
   -webkit-transition: all 0.3s ease-out;
-     -moz-transition: all 0.3s ease-out;
-      -ms-transition: all 0.3s ease-out;
-       -o-transition: all 0.3s ease-out;
-          transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .introjs-helperLayer *,
 .introjs-helperLayer *:before,
 .introjs-helperLayer *:after {
   -webkit-box-sizing: content-box;
-     -moz-box-sizing: content-box;
-      -ms-box-sizing: content-box;
-       -o-box-sizing: content-box;
-          box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -ms-box-sizing: content-box;
+  -o-box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 .introjs-helperNumberLayer {
@@ -122,19 +123,19 @@ tr.introjs-showElement > th {
 }
 
 .introjs-arrow {
-  border: 5px solid white;
+  border: 16px solid white;
   content:'';
   position: absolute;
 }
 .introjs-arrow.top {
-  top: -10px;
+  top: -32px;
   border-top-color:transparent;
   border-right-color:transparent;
   border-bottom-color:white;
   border-left-color:transparent;
 }
 .introjs-arrow.top-right {
-  top: -10px;
+  top: -32px;
   right: 10px;
   border-top-color:transparent;
   border-right-color:transparent;
@@ -142,7 +143,7 @@ tr.introjs-showElement > th {
   border-left-color:transparent;
 }
 .introjs-arrow.top-middle {
-  top: -10px;
+  top: -32px;
   left: 50%;
   margin-left: -5px;
   border-top-color:transparent;
@@ -151,41 +152,41 @@ tr.introjs-showElement > th {
   border-left-color:transparent;
 }
 .introjs-arrow.right {
-  right: -10px;
+  right: -32px;
   top: 10px;
   border-top-color:transparent;
   border-right-color:transparent;
   border-bottom-color:transparent;
-  border-left-color:white;
+  border-left-color:#37265e;
 }
 .introjs-arrow.right-bottom {
   bottom:10px;
-  right: -10px;
+  right: -32px;
   border-top-color:transparent;
   border-right-color:transparent;
   border-bottom-color:transparent;
-  border-left-color:white;
+  border-left-color:#37265e;
 }
 .introjs-arrow.bottom {
-  bottom: -10px;
-  border-top-color:white;
+  bottom: -32px;
+  border-top-color:#37265e;
   border-right-color:transparent;
   border-bottom-color:transparent;
   border-left-color:transparent;
 }
 .introjs-arrow.left {
-  left: -10px;
+  left: -32px;
   top: 10px;
   border-top-color:transparent;
-  border-right-color:white;
+  border-right-color:#37265e;
   border-bottom-color:transparent;
   border-left-color:transparent;
 }
 .introjs-arrow.left-bottom {
-  left: -10px;
+  left: -32px;
   bottom:10px;
   border-top-color:transparent;
-  border-right-color:white;
+  border-right-color:#37265e;;
   border-bottom-color:transparent;
   border-left-color:transparent;
 }
@@ -201,15 +202,21 @@ tr.introjs-showElement > th {
   border-radius: 3px;
   box-shadow: 0 1px 10px rgba(0,0,0,.4);
   -webkit-transition: opacity 0.1s ease-out;
-     -moz-transition: opacity 0.1s ease-out;
-      -ms-transition: opacity 0.1s ease-out;
-       -o-transition: opacity 0.1s ease-out;
-          transition: opacity 0.1s ease-out;
+  -moz-transition: opacity 0.1s ease-out;
+  -ms-transition: opacity 0.1s ease-out;
+  -o-transition: opacity 0.1s ease-out;
+  transition: opacity 0.1s ease-out;
 }
 
 .introjs-tooltipbuttons {
   text-align: right;
   white-space: nowrap;
+}
+.introjs-tooltipbuttons a{
+  color: white;
+}
+.introjs-tooltipbuttons a:hover, introjs-tooltipbuttons a:focus{
+  color: white;
 }
 
 /*
@@ -217,102 +224,68 @@ tr.introjs-showElement > th {
  Changed by Afshin Mehrabani
 */
 .introjs-button {
-  box-sizing: content-box;
-  position: relative;
-  overflow: visible;
-  display: inline-block;
-  padding: 0.3em 0.8em;
-  border: 1px solid #d4d4d4;
-  margin: 0;
+  color: white;
+}
+
+.introjs-button:focus {
+  color: white;
   text-decoration: none;
-  text-shadow: 1px 1px 0 #fff;
-  font: 11px/normal sans-serif;
-  color: #333;
-  white-space: nowrap;
-  cursor: pointer;
-  outline: none;
-  background-color: #ececec;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ececec));
-  background-image: -moz-linear-gradient(#f4f4f4, #ececec);
-  background-image: -o-linear-gradient(#f4f4f4, #ececec);
-  background-image: linear-gradient(#f4f4f4, #ececec);
-  -webkit-background-clip: padding;
-  -moz-background-clip: padding;
-  -o-background-clip: padding-box;
-  /*background-clip: padding-box;*/ /* commented out due to Opera 11.10 bug */
-  -webkit-border-radius: 0.2em;
-  -moz-border-radius: 0.2em;
-  border-radius: 0.2em;
-  /* IE hacks */
-  zoom: 1;
-  *display: inline;
-  margin-top: 10px;
 }
 
 .introjs-button:hover {
-  border-color: #bcbcbc;
-  text-decoration: none;
-  box-shadow: 0px 1px 1px #e3e3e3;
+
 }
 
 .introjs-button:focus,
 .introjs-button:active {
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ececec), to(#f4f4f4));
-  background-image: -moz-linear-gradient(#ececec, #f4f4f4);
-  background-image: -o-linear-gradient(#ececec, #f4f4f4);
-  background-image: linear-gradient(#ececec, #f4f4f4);
+
 }
 
 /* overrides extra padding on button elements in Firefox */
 .introjs-button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
+
 }
 
 .introjs-skipbutton {
-  box-sizing: content-box;
-  margin-right: 5px;
-  color: #7a7a7a;
+  float: left;
 }
 
 .introjs-prevbutton {
-  -webkit-border-radius: 0.2em 0 0 0.2em;
-  -moz-border-radius: 0.2em 0 0 0.2em;
-  border-radius: 0.2em 0 0 0.2em;
-  border-right: none;
+  background-color: #96459b;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: white;
+  border-radius: 5px;
 }
 
 .introjs-prevbutton.introjs-fullbutton {
-  border: 1px solid #d4d4d4;
-  -webkit-border-radius: 0.2em;
-  -moz-border-radius: 0.2em;
-  border-radius: 0.2em;
+
 }
 
 .introjs-nextbutton {
-  -webkit-border-radius: 0 0.2em 0.2em 0;
-  -moz-border-radius: 0 0.2em 0.2em 0;
-  border-radius: 0 0.2em 0.2em 0;
+  background-color: #96459b;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: white;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+.introjs-prevbutton:hover,
+.introjs-nextbutton:hover{
+  text-decoration: none;
+  color: white;
 }
 
 .introjs-nextbutton.introjs-fullbutton {
-  -webkit-border-radius: 0.2em;
-  -moz-border-radius: 0.2em;
-  border-radius: 0.2em;
+
 }
 
 .introjs-disabled, .introjs-disabled:hover, .introjs-disabled:focus {
-  color: #9a9a9a;
-  border-color: #d4d4d4;
-  box-shadow: none;
-  cursor: default;
-  background-color: #f4f4f4;
-  background-image: none;
-  text-decoration: none;
+  display: none;
 }
 
 .introjs-hidden {
-     display: none;
+  display: none;
 }
 
 .introjs-bullets {
@@ -390,8 +363,8 @@ tr.introjs-showElement > th {
   cursor: pointer;
 }
 .introjs-hint:focus {
-    border: 0;
-    outline: 0;
+  border: 0;
+  outline: 0;
 }
 .introjs-hidehint {
   display: none;
@@ -417,10 +390,10 @@ tr.introjs-showElement > th {
   z-index: 10;
   position: absolute;
   -webkit-transition: all 0.2s ease-out;
-     -moz-transition: all 0.2s ease-out;
-      -ms-transition: all 0.2s ease-out;
-       -o-transition: all 0.2s ease-out;
-          transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 .introjs-hint-no-anim .introjs-hint-dot {
   -webkit-animation: none;
@@ -450,47 +423,47 @@ tr.introjs-showElement > th {
 }
 
 @-moz-keyframes introjspulse {
- 0% {
+  0% {
     -moz-transform: scale(0);
     opacity: 0.0;
- }
- 25% {
+  }
+  25% {
     -moz-transform: scale(0);
     opacity: 0.1;
- }
- 50% {
+  }
+  50% {
     -moz-transform: scale(0.1);
     opacity: 0.3;
- }
- 75% {
+  }
+  75% {
     -moz-transform: scale(0.5);
     opacity: 0.5;
- }
- 100% {
+  }
+  100% {
     -moz-transform: scale(1);
     opacity: 0.0;
- }
+  }
 }
 
 @-webkit-keyframes introjspulse {
- 0% {
+  0% {
     -webkit-transform: scale(0);
     opacity: 0.0;
- }
- 25% {
+  }
+  25% {
     -webkit-transform: scale(0);
     opacity: 0.1;
- }
- 50% {
+  }
+  50% {
     -webkit-transform: scale(0.1);
     opacity: 0.3;
- }
- 75% {
+  }
+  75% {
     -webkit-transform: scale(0.5);
     opacity: 0.5;
- }
- 100% {
+  }
+  100% {
     -webkit-transform: scale(1);
     opacity: 0.0;
- }
+  }
 }
