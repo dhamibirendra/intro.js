@@ -496,7 +496,7 @@
         arrowLayer.className = 'introjs-arrow bottom';
 
         if (hintMode) {
-            var tooltipLayerStyleLeft = 0;
+          var tooltipLayerStyleLeft = 0;
         } else {
           var tooltipLayerStyleLeft = 15;
         }
@@ -1119,7 +1119,7 @@
       var top = rect.top - tooltipHeight - (currentTooltipPosition == 'top' ? tooltipHeight : 0);
 
       // adjusted bottom position
-      var bottom = rect.bottom + 30 + (currentTooltipPosition == 'bottom' ? tooltipHeight : 0);
+      var bottom = rect.bottom + 70 + (currentTooltipPosition == 'bottom' ? tooltipHeight : 0);
 
       var winHeight=_getWinSize().height;
 
