@@ -4,21 +4,12 @@
   z-index: 999999;
   background-color: #000;
   opacity: 0;
-  background-color: rgba(20,29,42,0.85);
-  /*background: -moz-radial-gradient(center,ellipse cover,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);*/
-  /*background: -webkit-gradient(radial,center center,0px,center center,100%,color-stop(0%,rgba(0,0,0,0.4)),color-stop(100%,rgba(0,0,0,0.9)));*/
-  /*background: -webkit-radial-gradient(center,ellipse cover,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);*/
-  /*background: -o-radial-gradient(center,ellipse cover,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);*/
-  /*background: -ms-radial-gradient(center,ellipse cover,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);*/
-  /*background: radial-gradient(center,ellipse cover,rgba(0,0,0,0.4) 0,rgba(0,0,0,0.9) 100%);*/
-  /*filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#66000000',endColorstr='#e6000000',GradientType=1)";*/
-  /*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";*/
-  /*filter: alpha(opacity=50);*/
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -ms-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
+  background-color: rgba(20, 29, 42, 0.85);
+  -webkit-transition: all .3s ease-out;
+  -moz-transition: all .3s ease-out;
+  -ms-transition: all .3s ease-out;
+  -o-transition: all .3s ease-out;
+  transition: all .3s ease-out
 }
 
 .introjs-fixParent {
@@ -28,13 +19,11 @@
   -moz-transform: none !important;
   -ms-transform: none !important;
   -o-transform: none !important;
-  transform: none !important;
+  transform: none !important
 }
 
-.introjs-showElement,
-tr.introjs-showElement > td,
-tr.introjs-showElement > th {
-  z-index: 9999999 !important;
+.introjs-showElement, tr.introjs-showElement > td, tr.introjs-showElement > th {
+  z-index: 9999999 !important
 }
 
 .introjs-disableInteraction {
@@ -42,13 +31,11 @@ tr.introjs-showElement > th {
   position: absolute;
   background-color: white;
   opacity: 0;
-  filter: alpha(opacity=0);
+  filter: alpha(opacity=0)
 }
 
-.introjs-relativePosition,
-tr.introjs-showElement > td,
-tr.introjs-showElement > th {
-  position: relative;
+.introjs-relativePosition, tr.introjs-showElement > td, tr.introjs-showElement > th {
+  position: relative
 }
 
 .introjs-helperLayer {
@@ -56,16 +43,16 @@ tr.introjs-showElement > th {
   position: absolute;
   z-index: 9999998;
   background-color: #FFF;
-  background-color: rgba(255,255,255,.9);
+  background-color: rgba(255, 255, 255, .9);
   border: 1px solid #777;
-  border: 1px solid rgba(0,0,0,.5);
+  border: 1px solid rgba(0, 0, 0, .5);
   border-radius: 4px;
-  box-shadow: 0 2px 15px rgba(0,0,0,.4);
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -ms-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .4);
+  -webkit-transition: all .3s ease-out;
+  -moz-transition: all .3s ease-out;
+  -ms-transition: all .3s ease-out;
+  -o-transition: all .3s ease-out;
+  transition: all .3s ease-out
 }
 
 .introjs-tooltipReferenceLayer {
@@ -74,21 +61,19 @@ tr.introjs-showElement > th {
   visibility: hidden;
   z-index: 10000000;
   background-color: transparent;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -ms-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
+  -webkit-transition: all .3s ease-out;
+  -moz-transition: all .3s ease-out;
+  -ms-transition: all .3s ease-out;
+  -o-transition: all .3s ease-out;
+  transition: all .3s ease-out
 }
 
-.introjs-helperLayer *,
-.introjs-helperLayer *:before,
-.introjs-helperLayer *:after {
+.introjs-helperLayer *, .introjs-helperLayer *:before, .introjs-helperLayer *:after {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   -ms-box-sizing: content-box;
   -o-box-sizing: content-box;
-  box-sizing: content-box;
+  box-sizing: content-box
 }
 
 .introjs-helperNumberLayer {
@@ -104,91 +89,170 @@ tr.introjs-showElement > th {
   font-weight: bold;
   color: white;
   text-align: center;
-  text-shadow: 1px 1px 1px rgba(0,0,0,.3);
-  background: #ff3019; /* Old browsers */
-  background: -webkit-linear-gradient(top, #ff3019 0%, #cf0404 100%); /* Chrome10+,Safari5.1+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff3019), color-stop(100%, #cf0404)); /* Chrome,Safari4+ */
-  background:    -moz-linear-gradient(top, #ff3019 0%, #cf0404 100%); /* FF3.6+ */
-  background:     -ms-linear-gradient(top, #ff3019 0%, #cf0404 100%); /* IE10+ */
-  background:      -o-linear-gradient(top, #ff3019 0%, #cf0404 100%); /* Opera 11.10+ */
-  background:         linear-gradient(to bottom, #ff3019 0%, #cf0404 100%);  /* W3C */
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+  background: #ff3019;
+  background: -webkit-linear-gradient(top, #ff3019 0, #cf0404 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff3019), color-stop(100%, #cf0404));
+  background: -moz-linear-gradient(top, #ff3019 0, #cf0404 100%);
+  background: -ms-linear-gradient(top, #ff3019 0, #cf0404 100%);
+  background: -o-linear-gradient(top, #ff3019 0, #cf0404 100%);
+  background: linear-gradient(to bottom, #ff3019 0, #cf0404 100%);
   width: 20px;
-  height:20px;
+  height: 20px;
   line-height: 20px;
   border: 3px solid white;
   border-radius: 50%;
-  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3019', endColorstr='#cf0404', GradientType=0)"; /* IE6-9 */
-  filter: "progid:DXImageTransform.Microsoft.Shadow(direction=135, strength=2, color=ff0000)"; /* IE10 text shadows */
-  box-shadow: 0 2px 5px rgba(0,0,0,.4);
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3019', endColorstr='#cf0404', GradientType=0)";
+  filter: "progid:DXImageTransform.Microsoft.Shadow(direction=135, strength=2, color=ff0000)";
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .4)
 }
 
 .introjs-arrow {
   border: 16px solid white;
-  content:'';
+  content: '';
+  position: absolute
+}
+
+.introjs-arrow:before {
+  content: ' ';
+  width: 0;
+  height: 0;
   position: absolute;
 }
+
 .introjs-arrow.top {
   top: -32px;
-  border-top-color:transparent;
-  border-right-color:transparent;
-  border-bottom-color:white;
-  border-left-color:transparent;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: rgb(102, 75, 156);;
+  border-left-color: transparent
 }
+
+.introjs-arrow.top:before {
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 16px solid #37265e;
+  bottom: -17px;
+  left: -16px;
+}
+
 .introjs-arrow.top-right {
   top: -32px;
   right: 10px;
-  border-top-color:transparent;
-  border-right-color:transparent;
-  border-bottom-color:white;
-  border-left-color:transparent;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: rgb(102, 75, 156);;
+  border-left-color: transparent
 }
+
+.introjs-arrow.top-right:before {
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 16px solid #37265e;
+  bottom: -17px;
+  left: -16px;
+}
+
 .introjs-arrow.top-middle {
   top: -32px;
   left: 50%;
   margin-left: -5px;
-  border-top-color:transparent;
-  border-right-color:transparent;
-  border-bottom-color:white;
-  border-left-color:transparent;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: rgb(102, 75, 156);;
+  border-left-color: transparent
 }
+
+.introjs-arrow.top-middle:before {
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 16px solid #37265e;
+  bottom: -17px;
+  left: -16px;
+}
+
 .introjs-arrow.right {
   right: -32px;
   top: 10px;
-  border-top-color:transparent;
-  border-right-color:transparent;
-  border-bottom-color:transparent;
-  border-left-color:#37265e;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: rgb(102, 75, 156);
 }
+
+.introjs-arrow.right:before {
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+  border-left: 16px solid #37265e;
+  bottom: -16px;
+  left: -17px;
+}
+
 .introjs-arrow.right-bottom {
-  bottom:10px;
+  bottom: 10px;
   right: -32px;
-  border-top-color:transparent;
-  border-right-color:transparent;
-  border-bottom-color:transparent;
-  border-left-color:#37265e;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: rgb(102, 75, 156);
 }
+
+.introjs-arrow.right-bottom:before {
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+  border-left: 16px solid #37265e;
+  bottom: -16px;
+  left: -17px;
+}
+
 .introjs-arrow.bottom {
   bottom: -32px;
-  border-top-color:#37265e;
-  border-right-color:transparent;
-  border-bottom-color:transparent;
-  border-left-color:transparent;
+  border-top-color: rgb(102, 75, 156);
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent
 }
+
+.introjs-arrow.bottom:before {
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-top: 16px solid #37265e;
+  bottom: 1px;
+  left: -16px;
+}
+
 .introjs-arrow.left {
   left: -32px;
   top: 10px;
-  border-top-color:transparent;
-  border-right-color:#37265e;
-  border-bottom-color:transparent;
-  border-left-color:transparent;
+  border-top-color: transparent;
+  border-right-color: rgb(102, 75, 156);
+  border-bottom-color: transparent;
+  border-left-color: transparent
 }
+
+.introjs-arrow.left:before {
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+  border-right: 16px solid #37265e;
+  bottom: -16px;
+  left: 1px;
+}
+
 .introjs-arrow.left-bottom {
   left: -32px;
-  bottom:10px;
-  border-top-color:transparent;
-  border-right-color:#37265e;;
-  border-bottom-color:transparent;
-  border-left-color:transparent;
+  bottom: 10px;
+  border-top-color: transparent;
+  border-right-color: rgb(102, 75, 156);
+  border-bottom-color: transparent;
+  border-left-color: transparent
+}
+
+.introjs-arrow.left-bottom:before {
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+  border-right: 16px solid #37265e;
+  bottom: -16px;
+  left: 1px;
 }
 
 .introjs-tooltip {
@@ -200,54 +264,38 @@ tr.introjs-showElement > th {
   min-width: 200px;
   max-width: 300px;
   border-radius: 3px;
-  box-shadow: 0 1px 10px rgba(0,0,0,.4);
-  -webkit-transition: opacity 0.1s ease-out;
-  -moz-transition: opacity 0.1s ease-out;
-  -ms-transition: opacity 0.1s ease-out;
-  -o-transition: opacity 0.1s ease-out;
-  transition: opacity 0.1s ease-out;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, .4);
+  -webkit-transition: opacity .1s ease-out;
+  -moz-transition: opacity .1s ease-out;
+  -ms-transition: opacity .1s ease-out;
+  -o-transition: opacity .1s ease-out;
+  transition: opacity .1s ease-out
 }
 
 .introjs-tooltipbuttons {
   text-align: right;
-  white-space: nowrap;
-}
-.introjs-tooltipbuttons a{
-  color: white;
-}
-.introjs-tooltipbuttons a:hover, introjs-tooltipbuttons a:focus{
-  color: white;
+  white-space: nowrap
 }
 
-/*
- Buttons style by http://nicolasgallagher.com/lab/css3-github-buttons/
- Changed by Afshin Mehrabani
-*/
+.introjs-tooltipbuttons a {
+  color: white
+}
+
+.introjs-tooltipbuttons a:hover, introjs-tooltipbuttons a:focus {
+  color: white
+}
+
 .introjs-button {
-  color: white;
+  color: white
 }
 
 .introjs-button:focus {
   color: white;
-  text-decoration: none;
-}
-
-.introjs-button:hover {
-
-}
-
-.introjs-button:focus,
-.introjs-button:active {
-
-}
-
-/* overrides extra padding on button elements in Firefox */
-.introjs-button::-moz-focus-inner {
-
+  text-decoration: none
 }
 
 .introjs-skipbutton {
-  float: left;
+  float: left
 }
 
 .introjs-prevbutton {
@@ -255,11 +303,7 @@ tr.introjs-showElement > th {
   padding: 10px 20px;
   font-size: 14px;
   color: white;
-  border-radius: 5px;
-}
-
-.introjs-prevbutton.introjs-fullbutton {
-
+  border-radius: 5px
 }
 
 .introjs-nextbutton {
@@ -268,42 +312,41 @@ tr.introjs-showElement > th {
   font-size: 14px;
   color: white;
   border-radius: 5px;
-  margin-left: 5px;
+  margin-left: 5px
 }
-.introjs-prevbutton:hover,
-.introjs-nextbutton:hover{
+
+.introjs-prevbutton:hover, .introjs-nextbutton:hover {
   text-decoration: none;
-  color: white;
-}
-
-.introjs-nextbutton.introjs-fullbutton {
-
+  color: white
 }
 
 .introjs-disabled, .introjs-disabled:hover, .introjs-disabled:focus {
-  display: none;
+  display: none
 }
 
 .introjs-hidden {
-  display: none;
+  display: none
 }
 
 .introjs-bullets {
-  text-align: center;
+  text-align: center
 }
+
 .introjs-bullets ul {
   box-sizing: content-box;
   clear: both;
   margin: 15px auto 0;
   padding: 0;
-  display: inline-block;
+  display: inline-block
 }
+
 .introjs-bullets ul li {
   box-sizing: content-box;
   list-style: none;
   float: left;
-  margin: 0 2px;
+  margin: 0 2px
 }
+
 .introjs-bullets ul li a {
   box-sizing: content-box;
   display: block;
@@ -314,13 +357,15 @@ tr.introjs-showElement > th {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   text-decoration: none;
-  cursor: pointer;
+  cursor: pointer
 }
+
 .introjs-bullets ul li a:hover {
-  background: #999;
+  background: #999
 }
+
 .introjs-bullets ul li a.active {
-  background: #999;
+  background: #999
 }
 
 .introjs-progress {
@@ -331,15 +376,16 @@ tr.introjs-showElement > th {
   border-radius: 4px;
   background-color: #ecf0f1
 }
+
 .introjs-progressbar {
   box-sizing: content-box;
   float: left;
-  width: 0%;
+  width: 0;
   height: 100%;
   font-size: 10px;
   line-height: 10px;
   text-align: center;
-  background-color: #08c;
+  background-color: #08c
 }
 
 .introjsFloatingElement {
@@ -347,11 +393,11 @@ tr.introjs-showElement > th {
   height: 0;
   width: 0;
   left: 50%;
-  top: 50%;
+  top: 50%
 }
 
 .introjs-fixedTooltip {
-  position: fixed;
+  position: fixed
 }
 
 .introjs-hint {
@@ -360,22 +406,24 @@ tr.introjs-showElement > th {
   background: transparent;
   width: 20px;
   height: 15px;
-  cursor: pointer;
+  cursor: pointer
 }
+
 .introjs-hint:focus {
   border: 0;
-  outline: 0;
+  outline: 0
 }
+
 .introjs-hidehint {
-  display: none;
+  display: none
 }
 
 .introjs-fixedhint {
-  position: fixed;
+  position: fixed
 }
 
 .introjs-hint:hover > .introjs-hint-pulse {
-  border: 5px solid rgba(60, 60, 60, 0.57);
+  border: 5px solid rgba(60, 60, 60, 0.57)
 }
 
 .introjs-hint-pulse {
@@ -389,17 +437,19 @@ tr.introjs-showElement > th {
   background-color: rgba(136, 136, 136, 0.24);
   z-index: 10;
   position: absolute;
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -ms-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
+  -webkit-transition: all .2s ease-out;
+  -moz-transition: all .2s ease-out;
+  -ms-transition: all .2s ease-out;
+  -o-transition: all .2s ease-out;
+  transition: all .2s ease-out
 }
+
 .introjs-hint-no-anim .introjs-hint-dot {
   -webkit-animation: none;
   -moz-animation: none;
-  animation: none;
+  animation: none
 }
+
 .introjs-hint-dot {
   box-sizing: content-box;
   border: 10px solid rgba(146, 146, 146, 0.36);
@@ -419,51 +469,51 @@ tr.introjs-showElement > th {
   top: -25px;
   left: -25px;
   z-index: 1;
-  opacity: 0;
+  opacity: 0
 }
 
 @-moz-keyframes introjspulse {
   0% {
     -moz-transform: scale(0);
-    opacity: 0.0;
+    opacity: .0
   }
   25% {
     -moz-transform: scale(0);
-    opacity: 0.1;
+    opacity: .1
   }
   50% {
     -moz-transform: scale(0.1);
-    opacity: 0.3;
+    opacity: .3
   }
   75% {
     -moz-transform: scale(0.5);
-    opacity: 0.5;
+    opacity: .5
   }
   100% {
     -moz-transform: scale(1);
-    opacity: 0.0;
+    opacity: .0
   }
 }
 
 @-webkit-keyframes introjspulse {
   0% {
     -webkit-transform: scale(0);
-    opacity: 0.0;
+    opacity: .0
   }
   25% {
     -webkit-transform: scale(0);
-    opacity: 0.1;
+    opacity: .1
   }
   50% {
     -webkit-transform: scale(0.1);
-    opacity: 0.3;
+    opacity: .3
   }
   75% {
     -webkit-transform: scale(0.5);
-    opacity: 0.5;
+    opacity: .5
   }
   100% {
     -webkit-transform: scale(1);
-    opacity: 0.0;
+    opacity: .0
   }
 }
