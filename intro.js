@@ -1,5 +1,5 @@
 /**
- * Intro.js v2.4.0
+ * Intro.js v2.5.0
  * https://github.com/usablica/intro.js
  *
  * Copyright (C) 2016 Afshin Mehrabani (@afshinmeh)
@@ -18,7 +18,7 @@
   }
 } (this, function (exports) {
   //Default config/variables
-  var VERSION = '2.4.0';
+  var VERSION = '2.5.0';
 
   /**
    * IntroJs main class
@@ -302,6 +302,19 @@
   }
 
   /**
+   * Go to the specific step of introduction with the explicit [data-step] number
+   *
+   * @api private
+   * @method _goToStepNumber
+   */
+  function _goToStepNumber(step) {
+    this._currentStepNumber = step;
+    if (typeof (this._introItems) !== 'undefined') {
+      _nextStep.call(this);
+    }
+  }
+
+  /**
    * Go to next step on intro
    *
    * @api private
@@ -309,6 +322,16 @@
    */
   function _nextStep() {
     this._direction = 'forward';
+
+    if (typeof (this._currentStepNumber) !== 'undefined') {
+      for( var i = 0, len = this._introItems.length; i < len; i++ ) {
+        var item = this._introItems[i];
+        if( item.step === this._currentStepNumber ) {
+          this._currentStep = i - 1;
+          this._currentStepNumber = undefined;
+        }
+      }
+    }
 
     if (typeof (this._currentStep) === 'undefined') {
       this._currentStep = 0;
@@ -338,7 +361,7 @@
    * Go to previous step on intro
    *
    * @api private
-   * @method _nextStep
+   * @method _previousStep
    */
   function _previousStep() {
     this._direction = 'backward';
@@ -401,12 +424,7 @@
       floatingElement.parentNode.removeChild(floatingElement);
     }
 
-    //remove `introjs-showElement` class from the element
-    var showElement = document.querySelector('.introjs-showElement');
-    if (showElement) {
-      _removeClass(showElement, /introjs-[a-zA-Z]+/g);
-      //showElement.className = showElement.className.replace(/introjs-[a-zA-Z]+/g, '').replace(/^\s+|\s+$/g, ''); // This is a manual trim.
-    }
+    _removeShowElement();
 
     //remove `introjs-fixParent` class from the elements
     var fixParents = document.querySelectorAll('.introjs-fixParent');
@@ -502,15 +520,15 @@
         }
 
         _checkRight(targetOffset, tooltipLayerStyleLeft, tooltipOffset, windowSize, tooltipLayer);
-        tooltipLayer.style.bottom = (targetOffset.height +  28) + 'px';
+        tooltipLayer.style.bottom = (targetOffset.height +  20) + 'px';
         break;
       case 'right':
-        tooltipLayer.style.left = (targetOffset.width + 28) + 'px';
+        tooltipLayer.style.left = (targetOffset.width + 20) + 'px';
         if (targetOffset.top + tooltipOffset.height > windowSize.height) {
           // In this case, right would have fallen below the bottom of the screen.
           // Modify so that the bottom of the tooltip connects with the target
           arrowLayer.className = "introjs-arrow left-bottom";
-          tooltipLayer.style.top = "-" + (tooltipOffset.height - targetOffset.height - 28) + "px";
+          tooltipLayer.style.top = "-" + (tooltipOffset.height - targetOffset.height - 20) + "px";
         } else {
           arrowLayer.className = 'introjs-arrow left';
         }
@@ -523,12 +541,12 @@
         if (targetOffset.top + tooltipOffset.height > windowSize.height) {
           // In this case, left would have fallen below the bottom of the screen.
           // Modify so that the bottom of the tooltip connects with the target
-          tooltipLayer.style.top = "-" + (tooltipOffset.height - targetOffset.height - 28) + "px";
+          tooltipLayer.style.top = "-" + (tooltipOffset.height - targetOffset.height - 20) + "px";
           arrowLayer.className = 'introjs-arrow right-bottom';
         } else {
           arrowLayer.className = 'introjs-arrow right';
         }
-        tooltipLayer.style.right = (targetOffset.width + 28) + 'px';
+        tooltipLayer.style.right = (targetOffset.width + 20) + 'px';
 
         break;
       case 'floating':
@@ -551,7 +569,7 @@
 
         var tooltipLayerStyleRight = 0;
         _checkLeft(targetOffset, tooltipLayerStyleRight, tooltipOffset, tooltipLayer);
-        tooltipLayer.style.top    = (targetOffset.height +  28) + 'px';
+        tooltipLayer.style.top    = (targetOffset.height +  20) + 'px';
         break;
 
       case 'bottom-middle-aligned':
@@ -568,7 +586,7 @@
           tooltipLayer.style.right = null;
           _checkRight(targetOffset, tooltipLayerStyleLeftRight, tooltipOffset, windowSize, tooltipLayer);
         }
-        tooltipLayer.style.top = (targetOffset.height + 28) + 'px';
+        tooltipLayer.style.top = (targetOffset.height + 20) + 'px';
         break;
 
       case 'bottom-left-aligned':
@@ -580,7 +598,7 @@
 
         var tooltipLayerStyleLeft = 0;
         _checkRight(targetOffset, tooltipLayerStyleLeft, tooltipOffset, windowSize, tooltipLayer);
-        tooltipLayer.style.top    = (targetOffset.height +  28) + 'px';
+        tooltipLayer.style.top    = (targetOffset.height +  20) + 'px';
         break;
     }
   }
@@ -708,25 +726,6 @@
       elementPosition = _getOffset(currentElement.element),
       widthHeightPadding = 10;
 
-
-      //add target element position style
-      if (currentElement instanceof SVGElement) {
-        var parentElm = currentElement.parentNode;
-
-        while (currentElement.parentNode != null) {
-          if (!parentElm.tagName || parentElm.tagName.toLowerCase() === 'body') break;
-
-          if (parentElm.tagName.toLowerCase() === 'svg') {
-            conosle.log(
-              'found parent'
-            )
-            currentElement = parentElm;
-          }
-
-          parentElm = parentElm.parentNode;
-        }
-      }
-
       // If the target element is fixed, the tooltip should be fixed as well.
       // Otherwise, remove a fixed class that may be left over from the previous
       // step.
@@ -840,10 +839,7 @@
       }
 
       //remove old classes if the element still exist
-      var oldShowElement = document.querySelector('.introjs-showElement');
-      if (oldShowElement) {
-        _removeClass(oldShowElement, /introjs-[a-zA-Z]+/g);
-      }
+      _removeShowElement();
 
       //we should wait until the CSS3 transition is competed (it's 0.3 sec) to prevent incorrect `height` and `width` calculation
       if (self._lastShowElementTimer) {
@@ -881,6 +877,7 @@
         }
       }, 350);
 
+      // end of old element if-else condition
     } else {
       var helperLayer       = document.createElement('div'),
       referenceLayer    = document.createElement('div'),
@@ -1017,6 +1014,8 @@
 
       //set proper position
       _placeTooltip.call(self, targetElement.element, tooltipLayer, arrowLayer, helperNumberLayer);
+
+      //end of new element if-else condition
     }
 
     //disable interaction
@@ -1027,7 +1026,9 @@
     prevTooltipButton.removeAttribute('tabIndex');
     nextTooltipButton.removeAttribute('tabIndex');
 
+    // when it's the first step of tour
     if (this._currentStep == 0 && this._introItems.length > 1) {
+      skipTooltipButton.className = 'introjs-button introjs-skipbutton';
       nextTooltipButton.className = 'introjs-button introjs-nextbutton';
 
       if (this._options.hidePrev == true) {
@@ -1040,7 +1041,10 @@
       prevTooltipButton.tabIndex = '-1';
       skipTooltipButton.innerHTML = this._options.skipLabel;
     } else if (this._introItems.length - 1 == this._currentStep || this._introItems.length == 1) {
+      // last step of tour
       skipTooltipButton.innerHTML = this._options.doneLabel;
+      // adding donebutton class in addition to skipbutton
+      skipTooltipButton.className += ' introjs-donebutton';
       prevTooltipButton.className = 'introjs-button introjs-prevbutton';
 
       if (this._options.hideNext == true) {
@@ -1052,6 +1056,8 @@
 
       nextTooltipButton.tabIndex = '-1';
     } else {
+      // steps between start and end
+      skipTooltipButton.className = 'introjs-button introjs-skipbutton';
       prevTooltipButton.className = 'introjs-button introjs-prevbutton';
       nextTooltipButton.className = 'introjs-button introjs-nextbutton';
       skipTooltipButton.innerHTML = this._options.skipLabel;
@@ -1060,49 +1066,8 @@
     //Set focus on "next" button, so that hitting Enter always moves you onto the next step
     nextTooltipButton.focus();
 
-    //add target element position style
-    if (targetElement.element instanceof SVGElement) {
-      var parentElm = targetElement.element.parentNode;
+    _setShowElement(targetElement);
 
-      while (targetElement.element.parentNode != null) {
-        if (!parentElm.tagName || parentElm.tagName.toLowerCase() === 'body') break;
-
-        if (parentElm.tagName.toLowerCase() === 'svg') {
-          _setClass(parentElm, 'introjs-showElement introjs-relativePosition')
-        }
-
-        parentElm = parentElm.parentNode;
-      }
-    } else {
-      //targetElement.element.node.className += ' introjs-showElement';
-      _setClass(targetElement.element, 'introjs-showElement')
-    }
-
-
-    var currentElementPosition = _getPropValue(targetElement.element, 'position');
-    if (currentElementPosition !== 'absolute' &&
-      currentElementPosition !== 'relative' &&
-      currentElementPosition !== 'fixed') {
-      //change to new intro item
-      //targetElement.element.className += ' introjs-relativePosition';
-      _setClass(targetElement.element, 'introjs-relativePosition')
-    }
-
-    var parentElm = targetElement.element.parentNode;
-    while (parentElm != null) {
-      if (!parentElm.tagName || parentElm.tagName.toLowerCase() === 'body') break;
-
-      //fix The Stacking Context problem.
-      //More detail: https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context
-      var zIndex = _getPropValue(parentElm, 'z-index');
-      var opacity = parseFloat(_getPropValue(parentElm, 'opacity'));
-      var transform = _getPropValue(parentElm, 'transform') || _getPropValue(parentElm, '-webkit-transform') || _getPropValue(parentElm, '-moz-transform') || _getPropValue(parentElm, '-ms-transform') || _getPropValue(parentElm, '-o-transform');
-      if (/[0-9]+/.test(zIndex) || opacity < 1 || (transform !== 'none' && transform !== undefined)) {
-        parentElm.className += ' introjs-fixParent';
-      }
-
-      parentElm = parentElm.parentNode;
-    }
     var tooltipSegment = document.querySelector('.introjs-tooltip');
 
     tooltipSegment.style.setProperty('display', '');
@@ -1140,6 +1105,74 @@
     }
   }
 
+  /**
+   * To remove all show element(s)
+   *
+   * @api private
+   * @method _removeShowElement
+   */
+  function _removeShowElement() {
+    var elms = document.querySelectorAll('.introjs-showElement');
+
+    for (var i = 0, l = elms.length; i < l; i++) {
+      var elm = elms[i];
+      _removeClass(elm, /introjs-[a-zA-Z]+/g);
+    }
+  }
+
+  /**
+   * To set the show element
+   * This function set a relative (in most cases) position and changes the z-index
+   *
+   * @api private
+   * @method _setShowElement
+   * @param {Object} targetElement
+   */
+  function _setShowElement(targetElement) {
+    // we need to add this show element class to the parent of SVG elements
+    // because the SVG elements can't have independent z-index
+    if (targetElement.element instanceof SVGElement) {
+      var parentElm = targetElement.element.parentNode;
+
+      while (targetElement.element.parentNode != null) {
+        if (!parentElm.tagName || parentElm.tagName.toLowerCase() === 'body') break;
+
+        if (parentElm.tagName.toLowerCase() === 'svg') {
+          _setClass(parentElm, 'introjs-showElement introjs-relativePosition');
+        }
+
+        parentElm = parentElm.parentNode;
+      }
+    }
+
+    _setClass(targetElement.element, 'introjs-showElement');
+
+    var currentElementPosition = _getPropValue(targetElement.element, 'position');
+    if (currentElementPosition !== 'absolute' &&
+      currentElementPosition !== 'relative' &&
+      currentElementPosition !== 'fixed') {
+      //change to new intro item
+      //targetElement.element.className += ' introjs-relativePosition';
+      _setClass(targetElement.element, 'introjs-relativePosition')
+    }
+
+    var parentElm = targetElement.element.parentNode;
+    while (parentElm != null) {
+      if (!parentElm.tagName || parentElm.tagName.toLowerCase() === 'body') break;
+
+      //fix The Stacking Context problem.
+      //More detail: https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context
+      var zIndex = _getPropValue(parentElm, 'z-index');
+      var opacity = parseFloat(_getPropValue(parentElm, 'opacity'));
+      var transform = _getPropValue(parentElm, 'transform') || _getPropValue(parentElm, '-webkit-transform') || _getPropValue(parentElm, '-moz-transform') || _getPropValue(parentElm, '-ms-transform') || _getPropValue(parentElm, '-o-transform');
+      if (/[0-9]+/.test(zIndex) || opacity < 1 || (transform !== 'none' && transform !== undefined)) {
+        parentElm.className += ' introjs-fixParent';
+      }
+
+      parentElm = parentElm.parentNode;
+    }
+  }
+
   function _setClass(element, className) {
     if (element instanceof SVGElement) {
       var pre = element.getAttribute('class') || '';
@@ -1148,7 +1181,7 @@
     } else {
       element.className += ' ' + className;
     }
-  };
+  }
 
   function _removeClass(element, classNameRegex) {
     if (element instanceof SVGElement) {
@@ -1235,6 +1268,7 @@
    */
   function _elementInViewport(el) {
     var rect = el.getBoundingClientRect();
+
     return (
       rect.top >= 0 &&
       rect.left >= 0 &&
@@ -1459,6 +1493,39 @@
   };
 
   /**
+   * Removes all hint elements on the page
+   * Useful when you want to destroy the elements and add them again (e.g. a modal or popup)
+   *
+   * @api private
+   * @method _removeHints
+   */
+  function _removeHints() {
+    var hints = this._targetElement.querySelectorAll('.introjs-hint');
+
+    if (hints && hints.length > 0) {
+      for (var i = 0; i < hints.length; i++) {
+        _removeHint.call(this, hints[i].getAttribute('data-step'));
+      }
+    }
+  };
+
+  /**
+   * Remove one single hint element from the page
+   * Useful when you want to destroy the element and add them again (e.g. a modal or popup)
+   * Use removeHints if you want to remove all elements.
+   *
+   * @api private
+   * @method _removeHint
+   */
+  function _removeHint(stepId) {
+    var hint = this._targetElement.querySelector('.introjs-hint[data-step="' + stepId + '"]');
+
+    if (hint) {
+      hint.parentNode.removeChild(hint);
+    }
+  };
+
+  /**
    * Add all available hints to the page
    *
    * @api private
@@ -1549,6 +1616,8 @@
   function _alignHintPosition(position, hint, element) {
     // get/calculate offset of target element
     var offset = _getOffset.call(this, element);
+    var iconWidth = 20;
+    var iconHeight = 20;
 
     // align the hint element
     switch (position) {
@@ -1558,23 +1627,35 @@
         hint.style.top = offset.top + 'px';
         break;
       case 'top-right':
-        hint.style.left = (offset.left + offset.width) + 'px';
+        hint.style.left = (offset.left + offset.width - iconWidth) + 'px';
         hint.style.top = offset.top + 'px';
         break;
       case 'bottom-left':
         hint.style.left = offset.left + 'px';
-        hint.style.top = (offset.top + offset.height) + 'px';
+        hint.style.top = (offset.top + offset.height - iconHeight) + 'px';
         break;
       case 'bottom-right':
-        hint.style.left = (offset.left + offset.width) + 'px';
-        hint.style.top = (offset.top + offset.height) + 'px';
+        hint.style.left = (offset.left + offset.width - iconWidth) + 'px';
+        hint.style.top = (offset.top + offset.height - iconHeight) + 'px';
+        break;
+      case 'middle-left':
+        hint.style.left = offset.left + 'px';
+        hint.style.top = (offset.top + (offset.height - iconHeight) / 2) + 'px';
+        break;
+      case 'middle-right':
+        hint.style.left = (offset.left + offset.width - iconWidth) + 'px';
+        hint.style.top = (offset.top + (offset.height - iconHeight) / 2) + 'px';
+        break;
+      case 'middle-middle':
+        hint.style.left = (offset.left + (offset.width - iconWidth) / 2) + 'px';
+        hint.style.top = (offset.top + (offset.height - iconHeight) / 2) + 'px';
         break;
       case 'bottom-middle':
-        hint.style.left = (offset.left + (offset.width / 2)) + 'px';
-        hint.style.top = (offset.top + offset.height) + 'px';
+        hint.style.left = (offset.left + (offset.width - iconWidth) / 2) + 'px';
+        hint.style.top = (offset.top + offset.height - iconHeight) + 'px';
         break;
       case 'top-middle':
-        hint.style.left = (offset.left + (offset.width / 2)) + 'px';
+        hint.style.left = (offset.left + (offset.width - iconWidth) / 2) + 'px';
         hint.style.top = offset.top + 'px';
         break;
     }
@@ -1666,12 +1747,18 @@
   function _getOffset(element) {
     var elementPosition = {};
 
+    var body = document.body;
+    var docEl = document.documentElement;
+
+    var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
+    var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
+
     if (element instanceof SVGElement) {
       var x = element.getBoundingClientRect()
-      elementPosition.top = x.top;
+      elementPosition.top = x.top + scrollTop;
       elementPosition.width = x.width;
       elementPosition.height = x.height;
-      elementPosition.left = x.left;
+      elementPosition.left = x.left + scrollLeft;
     } else {
       //set width
       elementPosition.width = element.offsetWidth;
@@ -1790,6 +1877,11 @@
 
       return this;
     },
+    goToStepNumber: function(step) {
+      _goToStepNumber.call(this, step);
+
+      return this;
+    },
     nextStep: function() {
       _nextStep.call(this);
       return this;
@@ -1893,6 +1985,14 @@
     },
     showHints: function () {
       _showHints.call(this);
+      return this;
+    },
+    removeHints: function () {
+      _removeHints.call(this);
+      return this;
+    },
+    removeHint: function (stepId) {
+      _removeHint.call(this, stepId);
       return this;
     }
   };
